@@ -1,0 +1,1080 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Reedsy",
+		"_postman_id": "84a65ec1-2f2f-b29f-0c9a-865f48e97e04",
+		"description": "This is a set of example requests for the Reedsy challenge. It will make it easier to test the different API endpoints without having to manually write requests one by one.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"description": "Requests to be tested with localhost URL.",
+			"item": [
+				{
+					"name": "GET api/v1/products",
+					"description": "List of products",
+					"item": [
+						{
+							"name": "List of products",
+							"request": {
+								"url": "localhost:3000/api/v1/products",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": "List of products"
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (in EUR)",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/products?currency=eur",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "currency",
+											"value": "eur",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (with pagination)",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/products?page=1&page_size=2",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "page_size",
+											"value": "2",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (filter by name)",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/products?name=mug",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (filter by code)",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/products?code=mug",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (sort by ID)",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/products?sort_column=id&sort_order=desc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "sort_column",
+											"value": "id",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "sort_order",
+											"value": "desc",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PUT api/v1/products/:id",
+					"description": "Update product price",
+					"item": [
+						{
+							"name": "Update product (with price cents and currency)",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/products/1?product[currency]=eur&product[price_cents]=1000",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"1"
+									],
+									"query": [
+										{
+											"key": "product[currency]",
+											"value": "eur",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product[price_cents]",
+											"value": "1000",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET api/v1/basket",
+					"description": "",
+					"item": [
+						{
+							"name": "Challenge IV Basket I",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=hoodie&currency=usd",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "hoodie",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket II",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=mug&currency=usd",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket III",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=mug&product_codes[]=mug&currency=usd",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket IV",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=mug&product_codes[]=mug&product_codes[]=mug&currency=usd",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket V",
+							"request": {
+								"url": {
+									"raw": "localhost:3000/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=tshirt&product_codes[]=tshirt&product_codes[]=tshirt&product_codes[]=mug&product_codes[]=hoodie",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "hoodie",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "heroku",
+			"description": "Requests to be tested with heroku production URL.",
+			"item": [
+				{
+					"name": "GET api/v1/products",
+					"description": "List of products",
+					"item": [
+						{
+							"name": "List of products",
+							"request": {
+								"url": "aqueous-chamber-49175.herokuapp.com//api/v1/products",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": "List of products"
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (in EUR)",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/products?currency=eur",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "currency",
+											"value": "eur",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (with pagination)",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/products?page=1&page_size=2",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "page_size",
+											"value": "2",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (filter by name)",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/products?name=mug",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (filter by code)",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/products?code=mug",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "List of products (sort by ID)",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/products?sort_column=id&sort_order=desc",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "sort_column",
+											"value": "id",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "sort_order",
+											"value": "desc",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PUT api/v1/products/:id",
+					"description": "Update product price",
+					"item": [
+						{
+							"name": "Update product (with price cents and currency)",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/products/1?product[currency]=usd&product[price_cents]=600",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"1"
+									],
+									"query": [
+										{
+											"key": "product[currency]",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product[price_cents]",
+											"value": "600",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET api/v1/basket",
+					"description": "",
+					"item": [
+						{
+							"name": "Challenge IV Basket I",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=hoodie&currency=usd",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "hoodie",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket II",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=mug&currency=usd",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket III",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=mug&product_codes[]=mug&currency=usd",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket IV",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=mug&product_codes[]=mug&product_codes[]=mug&currency=usd",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Challenge IV Basket V",
+							"request": {
+								"url": {
+									"raw": "aqueous-chamber-49175.herokuapp.com/api/v1/basket/check?product_codes[]=mug&product_codes[]=tshirt&product_codes[]=tshirt&product_codes[]=tshirt&product_codes[]=tshirt&product_codes[]=mug&product_codes[]=hoodie",
+									"host": [
+										"aqueous-chamber-49175",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"basket",
+										"check"
+									],
+									"query": [
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "tshirt",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "mug",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "product_codes[]",
+											"value": "hoodie",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

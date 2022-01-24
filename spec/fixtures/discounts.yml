@@ -1,0 +1,12 @@
+2x1mugs:
+  id: 1,
+  min_amount: 2,
+  max_amount: 2,
+  reduction: 0.5,
+  description: '2x1 in mugs!'
+  
+30offtshirts:
+  id: 2,
+  min_amount: 3,
+  reduction: 0.3,
+  description: '30% discount in t-shirts when buying 3 or more!'

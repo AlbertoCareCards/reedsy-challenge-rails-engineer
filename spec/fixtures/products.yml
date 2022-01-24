@@ -1,0 +1,17 @@
+mug:
+  id: 1
+  name: 'Reedsy Mug'
+  code: 'mug'
+  price_cents: 600
+
+tshirt:
+  id: 2
+  name: 'Reedsy T-shirt'
+  code: 'tshirt'
+  price_cents: 1500
+
+hoodie:
+  id: 3
+  name: 'Reedsy Hoodie'
+  code: 'hoodie'
+  price_cents: 2000

@@ -1,0 +1,39 @@
+version: '2.3'
+
+# Reedsy Challenge Development Environment
+# ----------------------------------------
+services:
+  # Reedsy Challenge API Container
+  # -----------------------------
+  reedsy-challenge:
+    build:
+      context: .
+      dockerfile: ./Docker/rails-production/Dockerfile
+    entrypoint: ./Docker/rails-production/start.sh
+    depends_on:
+      - db
+    volumes:
+      - .:/home/app/reedsy-challenge
+      - bundler_gems:/usr/local/bundle
+    environment:
+      - RAILS_ENV=production
+      - RAILS_LOG_TO_STDOUT=true
+      - RAILS_SERVE_STATIC_FILES=true
+    ports:
+      - "1234:1234"
+      - "3000:3000"
+      - "26162:26162"
+
+  # Reedsy Challenge Database Container
+  # -----------------------------------
+  db:
+    image: postgres:10.19-alpine
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  bundler_gems:

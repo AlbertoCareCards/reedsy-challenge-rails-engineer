@@ -1,0 +1,226 @@
+swagger: '2.0'
+info:
+  title: ReedsyChallenge (params in:formData)
+  description: |
+
+    <p>Another API description</p>
+  version: '1.0'
+  x-copyright: null
+basePath: /api
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /v1/products:
+    get:
+      tags:
+        - products
+      consumes:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+      operationId: get_v1_products
+      parameters:
+        - name: page
+          type: number
+          in: query
+          description: Pagination param, sorts results by pages and returns specified page results.If specified page is lower than 1 API will return page 1 results. If specifiedpage is higher than last page API will return last page results
+        - name: page_size
+          type: number
+          in: query
+          description: Pagination param, specifies size of result pages.
+        - name: name
+          type: string
+          in: query
+          description: Filter products, select ones whose name matches with parameter value.
+        - name: code
+          type: string
+          in: query
+          description: Filter products, select ones whose code matches with parameter value.
+        - name: sort_column
+          type: string
+          in: query
+          description: Select Product column/attribute you want to sort products by (name or code).
+        - name: sort_order
+          type: string
+          in: query
+          description: Select sorting order (asc for ascending and desc for descending).
+        - name: currency
+          type: string
+          in: query
+          description: Currency ISO code. Specifies currency in which prices will be returned. Only eur & usd codes allowed. Using other codes will return prices in default currency (USD)
+      responses:
+        '200':
+          description: successful response
+          schema:
+            type: object
+            properties:
+              total:
+                type: number
+                description: Total number of products in database.
+              page:
+                type: number
+                description: Results page (only present when using pagination parameters).
+              page_size:
+                type: number
+                description: Results page size (only present when using pagination parameters).
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Product ID.
+                  name:
+                    type: string
+                    description: Product name.
+                  code:
+                    type: string
+                    description: Product code.
+                  price:
+                    type: string
+                    description: Product price in specified currency.
+                additionalProperties: false
+                required:
+                  - id
+                  - name
+                  - code
+                  - price
+            additionalProperties: false
+            required:
+              - total
+              - page
+              - page_size
+              - data
+      description: |
+
+        <p>Return list of products in database (Challenge I)</p>
+  /v1/products/{id}:
+    put:
+      tags:
+        - products
+      consumes:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+      operationId: put_v1_products_id
+      parameters:
+        - name: id
+          type: number
+          in: path
+          required: true
+          description: ID of updated product.
+        - name: product[currency]
+          type: string
+          in: formData
+          description: Currency ISO code. Specify currency in which product price will be updated.
+        - name: product[price_cents]
+          type: number
+          in: formData
+          description: Updated product price in cents.
+      responses:
+        '200':
+          description: successful response
+          schema:
+            type: object
+            properties:
+              id:
+                type: number
+                description: Product ID.
+              name:
+                type: string
+                description: Product name.
+              code:
+                type: string
+                description: Product code.
+              price:
+                type: number
+                description: Product price in specified currency.
+            additionalProperties: false
+            required:
+              - id
+              - name
+              - code
+              - price
+        '400':
+          description: Invalid request parameters.
+        '404':
+          description: Product not found.
+        '422':
+          description: Unprocessable entity. Update parameters not valid.
+      description: |
+
+        <p>Updates product price (Challenge II)</p>
+  /v1/basket/check:
+    get:
+      tags:
+        - basket
+      consumes:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+      operationId: get_v1_basket_check
+      parameters:
+        - name: product_codes
+          type: array
+          items:
+            type: string
+          in: query
+          required: true
+          description: Collection of Product Codes, corresponding to the items in a basket.
+        - name: currency
+          type: string
+          in: query
+          description: Currency ISO code. Specifies currency in whichprices will be returned. Only eur & usd codes allowed.
+      responses:
+        '200':
+          description: successful response
+          schema:
+            type: object
+            properties:
+              total:
+                type: number
+                description: Basket price (sum of all products) without discounts.
+              total_with_discount:
+                type: number
+                description: Basket price (sum of all products) with discounts.
+              items:
+                type: array
+                items:
+                  type: string
+                description: Collection of basket product items.
+              discounts:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Discount ID.
+                  description:
+                    type: string
+                    description: Discount description.
+                  reduction:
+                    type: string
+                    description: Readable % of discount to products.
+                  applied_product_ids:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Product IDs correspondingto products in which discount is applied.
+                additionalProperties: false
+                required:
+                  - id
+                  - description
+                  - reduction
+                  - applied_product_ids
+            additionalProperties: false
+            required:
+              - total
+              - total_with_discount
+              - items
+              - discounts
+        '400':
+          description: Invalid request parameters.
+        '422':
+          description: Unprocessable entity. Update parameters not valid.
+      description: |
+
+        <p>Calculates basket total price (Challenge III &amp; IV).</p>
+definitions: {}
+tags: []
+host: localhost:3000

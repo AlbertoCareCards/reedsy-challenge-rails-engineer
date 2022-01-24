@@ -1,0 +1,7 @@
+pd1:
+  product_id: 1
+  discount_id: 1
+
+pd2:
+  product_id: 2
+  discount_id: 2
